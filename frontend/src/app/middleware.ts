@@ -1,13 +1,24 @@
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextRequest, NextResponse } from 'next/server'
-import createIntlMiddleware from 'next-intl/middleware'
+import createMiddleware from 'next-intl/middleware'
 
-const intlMiddleware = createIntlMiddleware({
-	locales: ['en', 'fr', 'ru'],
-	defaultLocale: 'en',
-})
+const locales: string[] = ['en', 'fr', 'ru']
 
-async function handleSupabaseMiddleware(req: NextRequest, res: NextResponse) {
+export async function middleware(req: NextRequest) {
+	const pathname = req.nextUrl.pathname
+
+	const shouldRedirect: boolean = locales.every(
+		(locale: string) =>
+			!pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+	)
+
+	if (shouldRedirect) {
+		const locale: string =
+			req.headers.get('accept-language')?.split(',')?.[0] || 'en'
+		return NextResponse.redirect(new URL(`/${locale}${pathname}`, req.url))
+	}
+
+	const res = await NextResponse.next(req)
 	const supabase = createMiddlewareClient({ req, res })
 
 	const {
@@ -16,7 +27,7 @@ async function handleSupabaseMiddleware(req: NextRequest, res: NextResponse) {
 	} = await supabase.auth.getSession()
 
 	if (error) {
-		console.error('Error in Supabase middleware:', error)
+		console.error('Error in middleware:', error)
 		return new Response('Internal Server Error', { status: 500 })
 	}
 
@@ -25,29 +36,17 @@ async function handleSupabaseMiddleware(req: NextRequest, res: NextResponse) {
 	}
 
 	req.nextUrl.searchParams.set('user_id', session.user.id)
-	return null
-}
-
-export async function middleware(req: NextRequest) {
-	const res = NextResponse.next()
-
-	// Handle Supabase authentication
-	const supabaseResponse = await handleSupabaseMiddleware(req, res)
-	if (supabaseResponse) {
-		return supabaseResponse
-	}
-
-	// Handle internationalization
-	const intlResponse = intlMiddleware(req)
-	if (intlResponse instanceof Response) {
-		return intlResponse
-	}
 
 	return res
 }
 
+export default createMiddleware({
+	locales: locales,
+	defaultLocale: 'en',
+})
+
 export const config = {
-	matcher: ['/', '/(fr|ru|en)/:path*'],
+	matcher: ['/((?!_next|api|static|favicon.ico|robots.txt).*)'],
 }
 
 // import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
