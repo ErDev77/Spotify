@@ -1,17 +1,47 @@
 {
-	"Welcome to Spotify": "Welcome to Spotify",
-	"No songs found": "No songs found",
-	"No liked songs": "No liked songs",
-	"Something went wrong": "Something went wrong",
-	"Search": "Search",
-	"Playlist": "Playlist",
-	"Liked songs": "Liked songs",
-	"Popular songs": "Popular songs",
-	"No songs available": "No songs available",
-	"Select Language": "Select Language",
-	"Choose your preferred language": "Choose your preferred language",
-	"Your Library": "Your Library",
-	"Playlists": "Playlists",
-	"Songs": "Songs",
-	"Artists": "Artists"
+	"Error": {
+		"Something went wrong": "Something went wrong"
+	},
+	"Home": {
+		"Playlist": "Playlist",
+		"Liked songs": "Liked songs"
+
+	},
+	"Liked": {
+		"No liked songs": "No liked songs",
+		"Liked songs": "Liked songs",
+		"Playlist": "Playlist"
+	},
+	"Search": {
+		"Search": "Search",
+		"No songs found": "No songs found"
+	},
+	"AuthModal": {
+		"Welcome to Spotify": "Welcome to Spotify",
+		"Log in to your account": "Log in to your account"
+	},
+	"LanguageModal": {
+		"Select Language": "Select Language",
+		"Choose your preferred language": "Choose your preferred language"
+	},
+	"LanguageSwitcher": {
+		"English": "English",
+		"French": "French",
+		"Russian": "Russian"
+	},
+	"Header": {
+		"Sign Up": "Sign Up",
+		"Log in": "Log in"
+	},
+	"Library": {
+		"Your Library": "Your Library",
+		"Playlists": "Playlists",
+		"Songs": "Songs",
+		"Artists": "Artists"
+	},
+	"UploadModal": {
+		"Select a song file": "Select a song file",
+		"Select an image": "Select an image",
+		"Create": "Create"
+	}
 }

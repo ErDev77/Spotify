@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-
+import { useTranslations } from "next-intl";
 
 
 const UploadModal = () => {
@@ -20,7 +20,7 @@ const UploadModal = () => {
     const supabaseClient = useSupabaseClient();
     const router = useRouter();
     const { user } = useUser();
-
+    const t = useTranslations('UploadModal')
 
     const {
         register,
@@ -119,8 +119,8 @@ const UploadModal = () => {
 
     return (
         <Modal 
-        title="upload song title"
-        description="upload song description"
+        title="Upload song title"
+        description="Upload song description"
         isOpen={uploadModal.isOpen}
         onChange={onChange}
         >
@@ -132,13 +132,13 @@ const UploadModal = () => {
                    id="title"
                    disabled={isLoading}
                    {...register("title", { required: true })}
-                   placeholder="song title"
+                   placeholder="Song title"
                 />
                 <Input 
                    id="author"
                    disabled={isLoading}
                    {...register("author", { required: true })}
-                   placeholder="song author"
+                   placeholder="Song author"
                 />
                 <div>
                     <div className="pb-1">

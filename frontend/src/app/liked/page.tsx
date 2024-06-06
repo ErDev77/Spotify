@@ -6,12 +6,12 @@ import LikedContent from "./components/LikedContent";
 import { useState, useEffect } from "react";
 import { Song } from "../../../types";
 import { useUser } from '@/hooks/useUser'
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from 'next-intl'
 
     const Liked = () => {
     const [songs, setSongs] = useState<Song[]>([])
     const { user, isLoading } = useUser()
-    const { t } = useTranslation()
+    const t = useTranslations('Liked songs')
     useEffect(() => {
         const fetchLikedSongs = async () => {
              if (!user) {

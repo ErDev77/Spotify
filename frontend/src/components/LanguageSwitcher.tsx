@@ -26,8 +26,8 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 		>
 			<option value='en'>{t('English')}</option>
 			<option value='fr'>{t('French')}</option>
-			<option value='de'>{t('German')}</option>
-			<option value='es'>{t('Spanish')}</option>
+			{/* <option value='de'>{t('German')}</option>
+			<option value='es'>{t('Spanish')}</option> */}
 			<option value='ru'>{t('Russian')}</option>
 		</select>
 	)

@@ -6,7 +6,7 @@ import LikeButton from "@/components/LikeButton";
 import useOnPlay from "@/hooks/useOnPlay";
 import { on } from "events";
 import useTranslation from 'next-translate/useTranslation'
-import 
+
 interface SearchContentProps {
     songs: Song[]   
 }

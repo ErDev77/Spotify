@@ -31,7 +31,7 @@ export default async function RootLayout({
 }) {
 	const { locale } = params
 	const userSongs = await getSongsByUserId()
-	const messages = await getMessages({ locale })
+	const messages = await getMessages()
 
 	return (
 		<html lang='en'>

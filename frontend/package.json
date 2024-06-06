@@ -19,6 +19,7 @@
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.43.4",
     "@types/react-redux": "^7.1.33",
+    "@types/react-router-dom": "^5.3.3",
     "next": "14.2.3",
     "next-i18next": "^15.3.0",
     "next-intl": "^3.14.1",
