@@ -25,12 +25,12 @@ export async function middleware(req: NextRequest) {
 	return res
 }
 
-export default createMiddleware({
-	locales: ['en', 'fr', 'ru'],
+// export default createMiddleware({
+// 	locales: ['en', 'fr', 'ru'],
 
-	defaultLocale: 'en',
-})
+// 	defaultLocale: 'en',
+// })
 
-export const config = {
-	matcher: ['/', '/(fr|ru|en)/:path*'],
-}
+// export const config = {
+// 	matcher: ['/', '/(fr|ru|en)/:path*'],
+// }

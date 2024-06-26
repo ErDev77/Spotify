@@ -9,8 +9,8 @@ import ToasterProvider from '@/providers/ToasterProvider'
 import getSongsByUserId from '@/actions/getSongsByUserId'
 import Player from '@/components/Player';
 import ClientProvider from '@/providers/ClientProvider'
-import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
+// import { NextIntlClientProvider } from 'next-intl'
+// import { getMessages } from 'next-intl/server'
 
 const font = Figtree({ subsets: ['latin'] })
 
@@ -24,19 +24,19 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
 	children,
-	params
+	// params
 }: {
 	children: React.ReactNode
 	params: { locale: string }
 }) {
-	const { locale } = params
+	// const { locale } = params
 	const userSongs = await getSongsByUserId()
-	const messages = await getMessages()
+	// const messages = await getMessages()
 
 	return (
 		<html lang='en'>
 			<body className={font.className}>
-				<NextIntlClientProvider locale={locale} messages={messages}>
+				{/* <NextIntlClientProvider locale={locale} messages={messages}> */}
 					<ClientProvider>
 						<ToasterProvider />
 						<SupabaseProvider>
@@ -47,7 +47,7 @@ export default async function RootLayout({
 							</UserProvider>
 						</SupabaseProvider>
 					</ClientProvider>
-				</NextIntlClientProvider>
+				{/* </NextIntlClientProvider> */}
 			</body>
 		</html>
 	)

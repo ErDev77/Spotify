@@ -13,7 +13,7 @@ import Button from "./Button";
 import LanguageModal from "./LanguageModal";
 import { useState } from "react";
 import useTranslation from "next-translate/useTranslation";
-
+import Link from 'next/link'
 
 interface LibraryProps {
    songs: Song[];
@@ -27,7 +27,7 @@ const Library: React.FC<LibraryProps> = ({
    const { user } = useUser();
    const onPlay = useOnPlay(songs);
    const { t } = useTranslation()
-const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
+   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
 
    const onClick = () => {
       if(!user) {
@@ -88,15 +88,15 @@ const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
                cursor-pointer 
                '
 				>
-					<div>
+					<Link href='/playlists'>
 						<button>{t('Playlists')}</button>
-					</div>
-					<div>
+					</Link>
+					<Link href='/songs'>
 						<button>{t('Songs')}</button>
-					</div>
-					<div>
+					</Link>
+					<Link href='/artists'>
 						<button>{t('Artists')}</button>
-					</div>
+					</Link>
 					{/* {songs.map(item => (
 						<MediaItem
 							onClick={(id: string) => onPlay(id)}

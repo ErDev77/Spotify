@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { useTranslations } from "next-intl";
+
 
 
 const UploadModal = () => {
@@ -20,7 +20,7 @@ const UploadModal = () => {
     const supabaseClient = useSupabaseClient();
     const router = useRouter();
     const { user } = useUser();
-    const t = useTranslations('UploadModal')
+
 
     const {
         register,
@@ -96,8 +96,8 @@ const UploadModal = () => {
                 user_id: user.id,
                 title: values.title,
                 author: values.author,
-                image_path: imageData.path,
-                song_path: songData.path
+                image_path: imageData?.path,
+                song_path: songData?.path
             });
 
         if(supabaseError) {

@@ -6,12 +6,10 @@ import LikedContent from "./components/LikedContent";
 import { useState, useEffect } from "react";
 import { Song } from "../../../types";
 import { useUser } from '@/hooks/useUser'
-import { useTranslations } from 'next-intl'
 
     const Liked = () => {
     const [songs, setSongs] = useState<Song[]>([])
     const { user, isLoading } = useUser()
-    const t = useTranslations('Liked songs')
     useEffect(() => {
         const fetchLikedSongs = async () => {
              if (!user) {
@@ -74,7 +72,7 @@ import { useTranslations } from 'next-intl'
                         md:mt-0
                         ">
                             <p className="hidden md:block font-semibold text-sm">
-                                {t('Playlist')}
+                                Playlist
                             </p>
                             <h1 className="
                             text-white
@@ -83,7 +81,7 @@ import { useTranslations } from 'next-intl'
                             lg:text-7xl
                             font-bold
                             ">
-                                {t('Liked songs')}
+                                Liked songs
                             </h1>
                         </div>
                     </div>

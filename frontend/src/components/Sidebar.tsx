@@ -11,7 +11,7 @@ import { Song } from "../../types";
 import usePlayer from "@/hooks/usePlayer";
 import { TbH3 } from "react-icons/tb";
 import { twMerge } from "tailwind-merge";
-import { useTranslations } from "next-intl";
+
 interface SidebarProps {
     children: React.ReactNode;
 	songs: Song[]
@@ -23,7 +23,6 @@ const Sidebar: React.FC<SidebarProps>  = ({
     children,
 	songs
 }) => {
-	const t = useTranslations('Sidebar')
     const pathname = usePathname();
 	const player = usePlayer();
     const routes = useMemo(
