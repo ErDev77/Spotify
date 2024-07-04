@@ -19,11 +19,12 @@ const AccountContent = () => {
 	const [newPassword, setNewPassword] = useState('')
 	const [songCount, setSongCount] = useState(0)
 	const [playlistCount, setPlaylistCount] = useState(0)
-	const [passwordLength, setPasswordLength] = useState(0)
+	const [passwordLength, setPasswordLength] = useState(0) // State to hold password length
 
     useEffect(() => {
 			const fetchData = async () => {
 				if (user) {
+					// Получение текущего пароля из базы данных
 					const { data: userCredentials, error: credentialsError } =
 						await supabase
 							.from('user_credentials')
@@ -37,7 +38,7 @@ const AccountContent = () => {
 						)
 						return
 					}
-					setCurrentPassword(userCredentials?.password || '')
+					setCurrentPassword(userCredentials?.password || '') // Установка текущего пароля
 				}
 			}
 
@@ -50,6 +51,8 @@ const AccountContent = () => {
 				setEmail(user.email || '')
 
     
+
+				// Fetch user data
 				const { data: userData, error: userError } = await supabase
 					.from('users')
 					.select('name, surname, password_length')
@@ -99,6 +102,7 @@ const AccountContent = () => {
 				updated_at: new Date().toISOString(),
 			}
 
+			// Update user data in 'users' table
 			const { error: updateError } = await supabase
 				.from('users')
 				.upsert(updates)
@@ -108,6 +112,7 @@ const AccountContent = () => {
 				return
 			}
 
+			// Update password if 'newPassword' is provided
 			if (newPassword) {
 				try {
 					const { error: passwordError } = await supabase.auth.updateUser({
@@ -168,7 +173,6 @@ const AccountContent = () => {
 				}
 				placeholder='Current Password'
 				readOnly
-				className='opacity-50 cursor-not-allowed'
 			/>
 			<Input
 				type='password'
@@ -178,14 +182,12 @@ const AccountContent = () => {
 				}
 				placeholder='New Password'
 			/>
-			<div className='text-center'>	
 			<button
 				onClick={handleSave}
-				className='bg-neutral-400 text-white px-4 py-2 rounded-lg'
+				className='bg-blue-500 text-white px-4 py-2 rounded-lg'
 			>
 				Save Changes
 			</button>
-			</div>
 			<div className='text-white mt-6'>
 				<h2 className='text-xl font-semibold'>Account Information</h2>
 				<p>Songs: {songCount}</p>

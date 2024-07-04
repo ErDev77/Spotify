@@ -27,7 +27,7 @@ const LanguageModal = () => {
 		<>
 			<button
 				onClick={() => handleOpenChange(true)}
-				className='flex items-center px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none'
+				className='flex items-center px-4 py-2 font-semibold text-white  rounded-lg shadow-md border border-white  focus:outline-none w-[200px] ml-9 transition hover:bg-neutral-800'
 			>
 				<FaGlobe className='mr-2' />
 				{t('Select Language')}

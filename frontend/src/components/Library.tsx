@@ -14,6 +14,7 @@ import LanguageModal from "./LanguageModal";
 import { useState } from "react";
 import useTranslation from "next-translate/useTranslation";
 import Link from 'next/link'
+import Footer from "./Footer";
 
 interface LibraryProps {
    songs: Song[];
@@ -36,6 +37,12 @@ const Library: React.FC<LibraryProps> = ({
       
       return uploadModal.onOpen();
 	};
+
+	const logOut = () => {
+		if(!user) {
+         return authModal.onOpen();
+      }
+	}
    
    return (
 			<div className='flex flex-col'>
@@ -86,24 +93,28 @@ const Library: React.FC<LibraryProps> = ({
                mt-4
                px-5
                cursor-pointer 
+               text-neutral-400
                '
 				>
 					<Link href='/playlists'>
-						<button>{t('Playlists')}</button>
+						<button onClick={logOut} className='hover:text-white transition'>
+							{t('Playlists')}
+						</button>
 					</Link>
 					<Link href='/songs'>
-						<button>{t('Songs')}</button>
+						<button onClick={logOut} className='hover:text-white transition'>
+							{t('Songs')}
+						</button>
 					</Link>
 					<Link href='/artists'>
-						<button>{t('Artists')}</button>
+						<button onClick={logOut} className='hover:text-white transition'>
+							{t('Artists')}
+						</button>
 					</Link>
-					{/* {songs.map(item => (
-						<MediaItem
-							onClick={(id: string) => onPlay(id)}
-							key={item.id}
-							data={item}
-						/>
-					))} */}
+				</div>
+				<hr className='border-gray-700 w-[250px] mt-12 mx-auto border-t-1'></hr>
+				<div className='flex flex-col mt-7 w-full'>
+					<Footer />
 					<LanguageModal />
 				</div>
 			</div>

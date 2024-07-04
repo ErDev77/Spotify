@@ -1,9 +1,7 @@
-// pages/app/playlists/[id].tsx
-
 import React, { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import PlaylistContent from './components/PlaylistsContent'
-import { Playlist } from '../../../types' 
+import { Playlist } from '../../../types'
 import fetchData from '../../../fetchData'
 import { useRouter } from 'next/router'
 
@@ -15,15 +13,21 @@ const PlaylistPage = () => {
 	useEffect(() => {
 		const fetchPlaylistById = async () => {
 			try {
+				console.log('Fetching data...')
 				const data = await fetchData()
-				const foundPlaylist = data.find((item: Playlist) => item.id === id)
+				console.log('Data fetched:', data)
+				const foundPlaylist = data.find(
+					(item: Playlist) => item.id.toString() === id
+				)
 				if (foundPlaylist) {
 					setPlaylist(foundPlaylist)
 				} else {
-					throw new Error('Плейлист не найден')
+					console.warn('Playlist not found, redirecting to 404')
+					router.replace('/404')
 				}
 			} catch (error) {
 				console.error('Ошибка при загрузке плейлиста:', error)
+				router.replace('/404')
 			}
 		}
 

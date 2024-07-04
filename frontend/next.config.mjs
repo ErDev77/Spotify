@@ -6,15 +6,7 @@ const nextConfig = {
 	images: {
 		domains: ['kzwyvxsgqdmygqixnkhd.supabase.co'],
 	},
-	async redirects() {
-		return [
-			{
-				source: '/app/playlists/:id', 
-				destination: '/app/playlists/[id]', 
-				permanent: true,
-			},
-		]
-	},
+	reactStrictMode: true,
 }
 
 export default nextConfig;

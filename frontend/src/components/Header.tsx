@@ -13,6 +13,7 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx"
 import { IoIosLogOut } from 'react-icons/io'
 import usePlayer from "@/hooks/usePlayer";
 import useTranslation from 'next-translate/useTranslation'
+import Link from "next/link";
 
 interface HeaderProps {
 	children: React.ReactNode
