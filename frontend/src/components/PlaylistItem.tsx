@@ -5,7 +5,7 @@ import { Playlist } from '../../types'
 import Image from 'next/image'
 import useLoadImage from '@/hooks/useLoadImage';
 interface PlaylistItemProps {
-	playlist: Playlist
+	playlist: Playlist;
 }
 
 const PlaylistItem: React.FC<PlaylistItemProps> = ({ playlist }) => {
@@ -13,7 +13,7 @@ const PlaylistItem: React.FC<PlaylistItemProps> = ({ playlist }) => {
 const imagePath = useLoadImage(playlist) as string | null
 
 	return (
-		<Link href={`/playlist/${playlist.id}`}>
+		<Link href={`/playlists/${playlist.id}`}>
 			<div
 				className='
 					relative
@@ -42,12 +42,9 @@ const imagePath = useLoadImage(playlist) as string | null
 						overflow-hidden
 					'
 				>
-				{imagePath && <Image
-						className='object-cover'
-						src={imagePath}
-						fill
-						alt='Image'
-					/>}
+					{imagePath && (
+						<Image className='object-cover' src={imagePath} fill alt='Image' />
+					)}
 				</div>
 				<div
 					className='

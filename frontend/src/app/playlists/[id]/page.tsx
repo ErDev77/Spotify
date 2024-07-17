@@ -1,15 +1,18 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
 import Header from '@/components/Header'
-import PlaylistContent from './components/PlaylistsContent'
-import { Playlist } from '../../../types'
-import fetchData from '../../../fetchData'
-import { useRouter } from 'next/router'
+import PlaylistContent from '../components/PlaylistsContent'
+import { Playlist } from '../../../../types'
+import fetchData from '../../../../fetchData'
+import { useParams, useRouter } from 'next/navigation'
+
 
 const PlaylistPage = () => {
 	const [playlist, setPlaylist] = useState<Playlist | null>(null)
+	const params = useParams()
+	const { id } = params
 	const router = useRouter()
-	const { id } = router.query
-
 	useEffect(() => {
 		const fetchPlaylistById = async () => {
 			try {
@@ -52,4 +55,4 @@ const PlaylistPage = () => {
 	)
 }
 
-export default PlaylistPage;
+export default PlaylistPage

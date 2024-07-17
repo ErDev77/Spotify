@@ -33,16 +33,14 @@ const PlaylistContent: React.FC<PlaylistContentProps> = ({ playlist }) => {
 		fetchPlaylists()
 	}, [])
 
+
 	return (
 		<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4'>
 			{loadedPlaylists.map(playlist => (
-				<Link
+				<PlaylistItem
 					key={playlist.id}
-					href={`/playlists/${playlist.id}`}
-					// onClick={() => router.push(`/playlists/${playlist.id}`)}
-				>
-					<PlaylistItem playlist={playlist} />
-				</Link>
+					playlist={playlist}
+				/>
 			))}
 		</div>
 	)
