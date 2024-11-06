@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import PlaylistItem from '@/components/PlaylistItem'
-import { Playlist } from '../../../../types'
+import { Playlist, Song } from '../../../../types'
 import fetchData from '../../../../fetchData'
 import { useRouter } from 'next/navigation'
 import { useUser } from '@/hooks/useUser';
 
 interface PlaylistContentProps {
-	playlist: Playlist[]
+	playlist: Playlist[];
+	songs: Song[];
 }
 
 const PlaylistContent: React.FC<PlaylistContentProps> = ({ playlist }) => {

@@ -6,13 +6,17 @@ import PlaylistContent from '../components/PlaylistsContent'
 import { Playlist } from '../../../../types'
 import fetchData from '../../../../fetchData'
 import { useParams, useRouter } from 'next/navigation'
-
+import SinglePlaylistContent from '@/components/SinglePlaylistContent'
+import { Song } from '../../../../types'
 
 const PlaylistPage = () => {
 	const [playlist, setPlaylist] = useState<Playlist | null>(null)
+	const [songs, setSongs] = useState<Song[]>([])
 	const params = useParams()
 	const { id } = params
 	const router = useRouter()
+
+
 	useEffect(() => {
 		const fetchPlaylistById = async () => {
 			try {
@@ -50,7 +54,7 @@ const PlaylistPage = () => {
 					{playlist.title}
 				</h1>
 			</Header>
-			<PlaylistContent playlist={[playlist]} />
+			<SinglePlaylistContent playlist={playlist} songs={songs} />
 		</div>
 	)
 }

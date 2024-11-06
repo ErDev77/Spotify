@@ -17,6 +17,13 @@ export interface Playlist {
 	created_at: string;
 }
 
+export interface PlaylistSongs {
+	id: string;
+	created_at: string;
+	playlist_id: string;
+    song_id: string;
+}
+
 export interface UserDetails {
     id: string;
     first_name: string;

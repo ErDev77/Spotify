@@ -6,7 +6,7 @@ import Image from 'next/image'
 import useLoadImage from '@/hooks/useLoadImage';
 interface PlaylistItemProps {
 	playlist: Playlist;
-}
+	}
 
 const PlaylistItem: React.FC<PlaylistItemProps> = ({ playlist }) => {
 
