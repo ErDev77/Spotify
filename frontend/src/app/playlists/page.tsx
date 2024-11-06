@@ -90,7 +90,7 @@ const Playlists = () => {
 				onClose={handleCloseModal}
 				user_id='user.id'
 			/>
-			<PlaylistContent playlist={[]} />
+			{/* <PlaylistContent songs = {songs} playlist={[]} /> */}
 		</div>
 	)
 }
